@@ -12,8 +12,9 @@ clientSocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
  
 
 # Connect to the server
-
-clientSocket.connect(("192.168.1.29",5456))
+ip = "192.168.1.29"
+port = 5456
+clientSocket.connect((ip,port))
 
  
 

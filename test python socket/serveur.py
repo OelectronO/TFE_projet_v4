@@ -17,7 +17,7 @@ serverSocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
 # Bind and listen
 
-serverSocket.bind(("192.168.1.29",5456))
+serverSocket.bind(("localhost",5456))
 
 serverSocket.listen()
 
@@ -43,14 +43,16 @@ while(True):
 
     # Send some data back to the client
 
-    clientConnected.send("Hello Client!1".encode())
 
     (clientConnected, clientAddress) = serverSocket.accept()
     print("Accepted a connection request from %s:%s"%(clientAddress[0], clientAddress[1]))
     dataFromClient = clientConnected.recv(1024)
     print(dataFromClient.decode())
-    if dataFromClient.decode() == "bonjour" :
-        clientConnected.send("yo les gas".encode())
+
+
+
+    if dataFromClient.decode() == "OelectronO connexion vérif" :
+        clientConnected.send("bonjour".encode())
     else :
-        print("erreur")
+        print("fail connect")
         clientConnected.send("erreur".encode())
